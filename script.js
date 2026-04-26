@@ -1,5 +1,4 @@
-
-        const quizData = [
+  const quizData = [
     {
         question: "What does 'HTML' stands for?",
         options: [
