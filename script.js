@@ -129,6 +129,7 @@
         const resultContainer = document.getElementById("result-container");
         const scoreElement = document.getElementById("score");
         const restartBtn = document.getElementById("restart-btn");
+        const message = document. querySelector(".message")
 
         // SETTING VALUES
         let currentQuestionIndex = 0;
@@ -140,8 +141,9 @@
             function loadQuestion() {
             answerSelected = false;
             const currentQuestion = quizData[currentQuestionIndex];
-            const questionNumber = currentQuestionIndex + 1;
-            questionElement.textContent = questionNumber + ". " + currentQuestion.question;
+            // const questionNumber = currentQuestionIndex + 1;
+            questionElement.textContent = currentQuestion.question;
+            message.innerHTML = `Question ${currentQuestionIndex + 1} of ${quizData.length}`
 
 
             //create the answer list
@@ -182,6 +184,23 @@
 };
 
 
+ // NEXT BTN
+        nextBtn.addEventListener("click", () => {
+    // checks if answer has been selected or not
+        if (answerSelected === false) {
+        alert("please, choose an answer")
+        return
+    }
+    // increases the index and checks if it has gotten to the last one
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+
         // SHOW RESULT
         function showResult() {
             quizContainer.classList.add("hidden");
@@ -198,21 +217,6 @@
             loadQuestion();
         }
 
-        // NEXT BTN
-        nextBtn.addEventListener("click", () => {
-    // checks if answer has been selected or not
-        if (answerSelected === false) {
-        alert("please, choose an answer")
-        return
-    }
-    // increases the index and checks if it has gotten to the last one
-            currentQuestionIndex++;
-            if (currentQuestionIndex < quizData.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
-        });
 
         // RESTART BUTTON
         restartBtn.addEventListener("click", restartQuiz);
