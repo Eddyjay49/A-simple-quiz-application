@@ -188,7 +188,7 @@
         nextBtn.addEventListener("click", () => {
     // checks if answer has been selected or not
         if (answerSelected === false) {
-        alert("please, choose an answer")
+        alert("please, select an answer")
         return
     }
     // increases the index and checks if it has gotten to the last one
@@ -206,6 +206,7 @@
             quizContainer.classList.add("hidden");
             resultContainer.classList.remove("hidden");
             scoreElement.textContent = ` ${score} / ${quizData.length}`;
+            message.innerHTML = ""
         }
 
         // RESTART QUIZ

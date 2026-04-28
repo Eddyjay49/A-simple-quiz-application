@@ -78,6 +78,8 @@ body {
             display: none;
         }
 
-        .score{
-            font-size: 5px;
+        h2, .score{
+            /* font-size: 5px; */
+            margin-bottom: 10px;
+            font-style: italic;
         }
